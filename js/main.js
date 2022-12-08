@@ -35,7 +35,6 @@ const createTodo = (todo) => {
         <i class="fas fa-trash" style="color: #FA396B;cursor: pointer;" onclick="deleteTodo(${todo.id})"></i>
     </div>
 </li>`;
-console.log(todo);
     if(todo.type === 'uncompleted') document.getElementById('todo').innerHTML += li;
     if(todo.type === 'completed') document.getElementById('completed').innerHTML += li;
     }
@@ -61,7 +60,7 @@ const saveToLocalStorage = (todo, type, todoList) => {
 
 const toCompleteTodo = (id) => {
     let indexTodoCompleted = todoList.findIndex((todo) => todo.id === id);
-    todoList[indexTodoCompleted].type = 'completed';
+    todoList[indexTodoCompleted].type === 'uncompleted' ? todoList[indexTodoCompleted].type = 'completed' : todoList[indexTodoCompleted].type = 'uncompleted';
     localStorage.setItem('todoList', JSON.stringify(todoList));
     completed.innerHTML = '';
     todo.innerHTML = '';
