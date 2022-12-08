@@ -43,10 +43,11 @@ const createTodo = (todo) => {
 renderTodoList(todoList);
 
 const addTodo = () => {
-  let todo = new Todo(
-    newTask.value ? newTask.value : `this todo's title is empty !`,
-    "uncompleted"
-  );
+  if (newTask.value === "") {
+    alert("Your todo has not title !");
+    return;
+  }
+  let todo = new Todo(newTask.value, "uncompleted");
   createTodo(todo);
   saveToLocalStorage(todo, "todoList", todoList);
   newTask.value = "";
